@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Search App</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f2f5;
+        padding: 20px;
+        margin: 0;
+        color: #333;
+      }
+      h1 {
+        text-align: center;
+        color: #444;
+        margin-bottom: 20px;
+      }
+
+      #query {
+        width: 30%;
+        padding: 10px;
+        margin: 5px auto;
+        display: block;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        outline: none;
+      }
+
+      #query:focus {
+        border-color: #007bff;
+      }
+
+      button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        display: block;
+        margin: 0 auto;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+      #results {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        overflow-y: auto;
+        max-height: 80vh;
+      }
+      .movie {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        padding: 15px;
+        text-align: center;
+        transition: transform 0.2s ease;
+      }
+
+      .movie:hover {
+        transform: scale(1.05);
+      }
+
+      .movie img {
+        width: 100%;
+        height: auto;
+        max-width: 150px;
+        margin: 0 auto;
+        border-radius: 8px;
+      }
+
+      .movie h2 {
+        font-size: 18px;
+        color: #333;
+        margin: 10px 0;
+      }
+
+      .movie p {
+        font-size: 14px;
+        color: #777;
+      }
+      body {
+        overflow-x: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Get Movie In Just A Click</h1>
+    <input type="text" id="query" placeholder="Enter movie name" /><br><br>
+    <button>Search</button>
+    <div id="results"></div>
+
+    <script>
+      const bttn = document.querySelector("button");
+
+      bttn.addEventListener("click", async () => {
+        const text = document.querySelector("#query").value;
+        try {
+          const response = await fetch(`/search?name=${text}`, { method: 'GET' });
+          const data = await response.json();
+          
+          const results = document.getElementById("results");
+          results.innerHTML = "";
+          data.Search.forEach((movie) => {
+            const movieDiv = document.createElement("div");
+            movieDiv.className = "movie";
+            movieDiv.innerHTML = `
+              <img src="${movie.Poster}" alt="${movie.Title}">
+              <h2>${movie.Title}</h2>
+              <p>${movie.Year}</p>
+            `;
+            results.appendChild(movieDiv);
+          });
+        } catch {
+          console.log("Some error occurred...");
+        }
+      });
+    </script>
+  </body>
+</html>

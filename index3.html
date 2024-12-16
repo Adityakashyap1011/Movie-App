@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #f3f4f6, #e2e8f0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 20px;
+      }
+
+      .main {
+        background-color: #ffffff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 450px;
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      label {
+        font-size: 1.1rem;
+        color: #333;
+        text-align: left;
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+
+      input {
+        padding: 12px;
+        font-size: 1rem;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        outline: none;
+        transition: all 0.3s ease;
+        color: #333;
+      }
+
+      input:focus {
+        border-color: #ff6f61;
+        box-shadow: 0 0 8px rgba(255, 111, 97, 0.3);
+      }
+
+      button {
+        padding: 12px;
+        font-size: 1.1rem;
+        background-color: #ff6f61;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: bold;
+      }
+
+      button:hover {
+        background-color: #e65c50;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      button:active {
+        background-color: #d14b42;
+        transform: translateY(1px);
+      }
+
+      p {
+        font-size: 1rem;
+        color: #555;
+      }
+
+      p button {
+        background-color: transparent;
+        border: none;
+        color: #ff6f61;
+        font-size: 1.1rem;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      p button:hover {
+        color: #ea9189;
+        text-decoration: underline;
+      }
+      @media (max-width: 600px) {
+        .main {
+          padding: 30px;
+          width: 100%;
+        }
+
+        h1 {
+          font-size: 1.6rem;
+        }
+
+        input,
+        button {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <h1>WELCOME BACK</h1>
+      <form action="/check" method="post">
+        <label for="username">Username:</label>
+        <input type="text" name="username" required />
+        
+        <label for="password">Password:</label>
+        <input type="password" name="password" required />
+        
+        <button type="submit">Submit</button>
+      </form>
+      <br>
+    </div>
+  </body>
+</html>
